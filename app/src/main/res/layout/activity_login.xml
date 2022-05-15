@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@drawable/logo"
+        android:id="@+id/logo"
+        android:contentDescription="@string/app_name" />
+
+    <RelativeLayout
+        android:layout_below="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp">
+
+        <GridLayout
+            android:id="@+id/login_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2">
+
+            <TextView
+                android:labelFor="@+id/txtUsername"
+                android:layout_columnWeight="0.2"
+                android:text="@string/username"
+                android:layout_column="0"
+                android:layout_row="0" />
+
+            <EditText
+                android:layout_columnWeight="0.8"
+                android:id="@+id/txtUsername"
+                android:layout_column="1"
+                android:singleLine="true"
+                android:nextFocusDown="@id/txtPassword"
+                android:layout_row="0" />
+
+            <TextView
+                android:layout_columnWeight="0.2"
+                android:labelFor="@+id/txtPassword"
+                android:text="@string/password"
+                android:layout_column="0"
+                android:layout_row="1" />
+
+            <EditText
+                android:id="@+id/txtPassword"
+                android:inputType="textPassword"
+                android:layout_columnWeight="0.8"
+                android:layout_column="1"
+                android:singleLine="true"
+                android:layout_row="1"
+                android:backgroundTint="@color/btn_background"
+                android:nextFocusDown="@id/btnLogin"
+                android:importantForAutofill="no" />
+        </GridLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login_form"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/btn_background"
+            android:id="@+id/btnLogin"
+            android:text="@string/btn_log_in_text" />
+    </RelativeLayout>
+</RelativeLayout>
