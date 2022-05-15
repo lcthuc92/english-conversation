@@ -16,6 +16,7 @@
         <activity
             android:name=".SlideActivity"
             android:exported="true"
+            android:screenOrientation="landscape"
             android:theme="@style/Theme.Conversation.NoActionBar"/>
         <activity
             android:name=".MainActivity"

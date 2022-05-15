@@ -13,4 +13,6 @@
     <color name="status_warning">#ffff99</color>
     <color name="status_high_warning">#ffd480</color>
     <color name="title">#70931f</color>
+    <color name="blue">#2196F3</color>
+    <color name="mean">#4CAF50</color>
 </resources>
