@@ -2,6 +2,7 @@ package thucluong.english.conversation;
 
 import static thucluong.english.conversation.common.Constant.HOST;
 import static thucluong.english.conversation.common.Constant.LOGIN_RESULT;
+import static thucluong.english.conversation.common.Constant.USER_NAME;
 import static thucluong.english.conversation.common.Constant.VIEW_SCREEN;
 import static thucluong.english.conversation.enums.ScreenView.LOGIN;
 import static thucluong.english.framework.utils.constant.AppSettingsKey.ACCESS_TOKEN;
@@ -55,16 +56,8 @@ public class LoginActivity extends BaseActivity implements Response.Listener<Str
   @Override
   public void onResponse(String response) {
     JwtResponse jwtResponse = JsonConvertUtils.parseJSONToObject(response, JwtResponse.class);
-    AppSettings token = DbHelper.getInstance().getAppSettingsDao().getByName(ACCESS_TOKEN);
-    if (token == null) {
-      token = new AppSettings();
-      token.setName(ACCESS_TOKEN);
-      token.setValue(jwtResponse.getToken());
-      DbHelper.getInstance().getAppSettingsDao().insert(token);
-    } else {
-      token.setValue(jwtResponse.getToken());
-      DbHelper.getInstance().getAppSettingsDao().update(token);
-    }
+    DbHelper.getInstance().insertOrUpdateAppSettings(ACCESS_TOKEN, jwtResponse.getToken());
+    DbHelper.getInstance().insertOrUpdateAppSettings(USER_NAME, jwtResponse.getUsername());
 
     Intent intent = new Intent(this.getApplicationContext(), MainActivity.class);
     intent.putExtra(VIEW_SCREEN, LOGIN);
